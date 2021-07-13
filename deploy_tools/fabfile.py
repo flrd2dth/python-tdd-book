@@ -6,7 +6,7 @@ REPO_URL = 'https://github.com/flrd2dth/python-tdd-book.git'
 
 def deploy():
     site_folder = f'/home/{env.user}/sites/{env.host}'
-    run(f'/mkdir -p {site_folder}')
+    run(f'mkdir -p {site_folder}')
     with cd(site_folder):
         _get_latest_source()
         _update_virtualenv()
@@ -20,7 +20,7 @@ def _get_latest_source():
     else:
         run(f'git clone {REPO_URL} .')
     current_commit = local("git log -n 1 --format=%H", capture=True)
-    run(f"git reset --hard {current_commit}')
+    run(f'git reset --hard {current_commit}')
 
 def _update_virtualenv():
     if not exists('virtualenv/bin/pip'):
